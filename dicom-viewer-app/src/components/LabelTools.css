@@ -1,0 +1,44 @@
+.label-tools {
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #eee;
+}
+
+.label-tools h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: #333;
+}
+
+.add-label-button {
+  padding: 8px 20px;
+  background-color: #4285f4;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.add-label-button:hover {
+  background-color: #3367d6;
+}
+
+.add-label-button.active {
+  background-color: #f44336;
+}
+
+.add-label-button.active:hover {
+  background-color: #d32f2f;
+}
+
+.drawing-instructions {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #666;
+  line-height: 1.4;
+}

@@ -1,0 +1,22 @@
+.dicom-info {
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #eee;
+}
+
+.info-item {
+  margin-bottom: 8px;
+  font-size: 14px;
+  display: flex;
+}
+
+.info-label {
+  font-weight: bold;
+  min-width: 120px;
+}
+
+.info-value {
+  flex: 1;
+}

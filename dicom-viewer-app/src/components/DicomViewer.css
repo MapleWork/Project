@@ -1,0 +1,94 @@
+.dicom-viewer-container {
+  font-family: Arial, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.dicom-viewer-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.main-container {
+  display: flex;
+  gap: 20px;
+}
+
+.left-panel {
+  width: 250px;
+  flex-shrink: 0;
+}
+
+.middle-panel {
+  flex: 1;
+  min-width: 0;
+}
+
+.right-panel {
+  width: 250px;
+  flex-shrink: 0;
+}
+
+.upload-section {
+  margin-bottom: 20px;
+}
+
+.upload-button {
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #4285f4;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s;
+}
+
+.upload-button:hover {
+  background-color: #3367d6;
+}
+
+.upload-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: #d32f2f;
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #ffebee;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.loading {
+  margin-bottom: 10px;
+  color: #666;
+  text-align: center;
+  font-style: italic;
+}
+
+.dicom-canvas {
+  border: 1px solid #ddd;
+  width: 100%;
+  height: 500px;
+  position: relative;
+  background-color: #f9f9f9;
+  overflow: hidden;
+}
+
+#layerGroup {
+  position: relative;
+}
+
+#labelCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  pointer-events: none;
+}
