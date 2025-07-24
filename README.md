@@ -1,5 +1,4 @@
 <h1 align="center">Hi 👋, I'm Maple</h1>
-<h3 align="left">Connect with me:</h3>
 <p align="left">
 🎯 主要專案
 📊 上市公司財報分析系統
