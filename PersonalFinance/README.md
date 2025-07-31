@@ -8,4 +8,4 @@
 ### 統計報表
 ![image](https://github.com/MapleWork/Project/blob/c594f1c205e351935751bbf75bdc5ad81a4c553d/PersonalFinance/statistics.png)
 ### 管理分類
-![image](https://github.com/MapleWork/Project/blob/c594f1c205e351935751bbf75bdc5ad81a4c553d/PersonalFinance/statistics.png)
+![image](https://github.com/MapleWork/Project/blob/fb15c518b71677fdf4a8ea29e2ece7a51e95cb8e/PersonalFinance/categories.png)
