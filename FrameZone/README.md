@@ -30,4 +30,6 @@
 
 ![image](https://github.com/MapleWork/Project/blob/main/FrameZone/Image/%E9%87%8D%E8%A3%BD%E5%AF%86%E7%A2%BC.png)
 
+![image](https://github.com/MapleWork/Project/blob/main/FrameZone/Image/email%E9%87%8D%E8%A8%AD%E5%AF%86%E7%A2%BC%E9%80%9A%E7%9F%A5.png)
+
 ![image](https://github.com/MapleWork/Project/blob/main/FrameZone/Image/%E9%80%9A%E7%9F%A5.png)
