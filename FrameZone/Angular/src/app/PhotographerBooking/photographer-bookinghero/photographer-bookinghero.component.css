@@ -1,0 +1,164 @@
+.hero-container {
+  position: relative;
+  width: 100vw;
+  height: 85vh;
+  margin-left: calc(50% - 50vw);
+  overflow: hidden;
+  margin-top: 80px; /* Header 高度 */
+}
+.carousel-item {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+  background-size: cover;
+  background-position: center;
+}
+.carousel-item.active {
+  opacity: 1;
+}
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.6)
+  );
+  z-index: 1;
+}
+.photographer-tag {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  z-index: 2;
+}
+.hero-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  padding: 0 20px;
+  color: white;
+}
+h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+p {
+  font-size: 1.25rem;
+  margin-bottom: 2.5rem;
+  opacity: 0.9;
+}
+
+.search-bar {
+  background: white;
+  width: 100%;
+  max-width: 900px;
+  border-radius: 999px; /* Airbnb 關鍵 */
+  display: flex;
+  align-items: center;
+  padding: 6px; /* 讓內部有空氣感 */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.search-group {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 14px 18px;
+  border-right: 1px solid #f1f1f1; /* 非常淡 */
+}
+.search-group:last-of-type {
+  border-right: none;
+}
+
+.search-group i {
+  color: #666;
+  margin-right: 10px;
+}
+
+select,
+input[type="date"] {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 15px;
+  color: #222;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* 3. CTA 按鈕 */
+.btn-search {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 0 32px;
+  height: 52px;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-search:hover {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  transform: scale(1.03);
+}
+
+/* 快速標籤 (Quick Tags) */
+.quick-tags {
+  margin-top: 25px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.tag {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.tag:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* RWD 響應式 */
+@media (max-width: 768px) {
+  .search-bar {
+    flex-direction: column;
+    border-radius: 24px;
+  }
+  .search-group {
+    border-right: none;
+    border-bottom: 1px solid #f1f1f1;
+  }
+  .btn-search {
+    width: 100%;
+    justify-content: center;
+    margin-top: 6px;
+  }
+  h1 {
+    font-size: 2.2rem;
+  }
+}

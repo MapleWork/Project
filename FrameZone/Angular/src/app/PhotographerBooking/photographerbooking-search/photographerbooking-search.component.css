@@ -1,0 +1,56 @@
+/* components/photographerbooking-search/photographerbooking-search.component.css */
+.search-bar {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 1000;
+  padding: 12px 24px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  border-bottom: 1px solid #eeeeee;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.search-field {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #e0e0e0;
+  border-radius: 999px;
+  padding: 8px 16px;
+}
+
+.search-field input,
+.search-field select {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 14px;
+  background: transparent;
+}
+
+.search-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 0 32px;
+  height: 40px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight:350;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+.search-btn:hover {
+  color: white;
+  filter: brightness(1.05); /* 稍微變亮一點點 */
+  transform: scale(1.02); /* 微微放大 2% */
+  box-shadow: 0 4px 12px rgba(107, 92, 255, 0.3);
+}

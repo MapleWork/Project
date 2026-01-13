@@ -1,0 +1,341 @@
+.page-header {
+  margin: auto;
+  background: linear-gradient(135deg, #79a3f1 0%, #764ba2 100%);
+  /* padding: 0 20px 30px; */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.top-nav-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  /* padding-right: 100px; */
+  padding: 0 20px;
+}
+
+/* 上層連結的樣式：小字且顏色較淺 */
+.nav-link-sm {
+  color: white;
+  font-size: 1rem;
+  padding-left: 10px;
+  margin-right: 10px;
+  text-decoration: none;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.nav-link-sm:hover {
+  opacity: 1;
+  color: #131b33;
+}
+
+/* 下層主導覽列的垂直間距 */
+.main-header-content {
+  /* padding: 5px 0; */
+}
+
+.main-nav-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 60px;
+}
+
+/* 搜尋+購物車容器 - 置中且控制整體寬度 */
+.search-cart-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  padding-left: 20px;
+  /* padding-left: 0; */
+}
+
+/* 搜尋群組 - 讓它自動延展 */
+.search-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+  /* 佔滿除了購物車以外的空間 */
+  max-width: 1200px;
+  padding-left: 30px;
+}
+
+/* 搜尋輸入框容器 */
+.search-input-container {
+  margin-bottom: 10px;
+  flex-grow: 1;
+  min-width: 0;
+}
+
+/* 搜尋按鈕 */
+.btn-indigo {
+  margin-bottom: 10px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* 購物車圖示 */
+.cart-icon {
+  flex-shrink: 0;
+  margin-bottom: 10px;
+  margin-left: 50px;
+  margin-right: -180px;
+}
+
+.cart-icon a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+/* 購物車圓點樣式 */
+.cart-badge {
+  position: absolute;
+  top: 0;
+  /* 調整上下位置 */
+  right: 0;
+  /* 調整左右位置 */
+  background-color: #fdf905;
+  color: #180779;
+  font-size: 0.9rem;
+  font-weight: bold;
+  min-width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  /* border: 1.5px solid #79a3f1; */
+  /* 加上與背景相近的邊框，增加層次感 */
+  z-index: 10;
+  pointer-events: none;
+  /* 防止圓點擋住點擊 */
+}
+
+/* 懸停時圖示放大，圓點也要跟著微調位置的視覺效果 */
+.cart-icon a:hover .cart-badge {
+  transform: scale(1.15);
+  stroke: #131b33;
+  filter: drop-shadow(0 0 8px rgba(238, 239, 255, 0.5));
+}
+
+/* 購物車 SVG */
+.cart-icon a svg {
+  stroke: azure;
+  width: 40px;
+  height: 40px;
+  transition: all 0.3s ease;
+}
+
+/* 購物車懸停效果 */
+.cart-icon a:hover svg {
+  transform: scale(1.15);
+  stroke: #131b33;
+  filter: drop-shadow(0 0 8px rgba(238, 239, 255, 0.5));
+}
+
+/* 媒體查詢：針對大螢幕 (> 1200px) */
+@media (min-width: 1200px) {
+  .top-nav-container {
+    max-width: 1100px;
+    padding-right: 80px;
+  }
+}
+
+/* 媒體查詢：針對超大螢幕 (> 1400px) */
+@media (min-width: 1400px) {
+
+  .search-cart-container,
+  .top-nav-container {
+    max-width: 1300px;
+    padding-right: 100px;
+  }
+}
+
+/* 媒體查詢：手機版 */
+@media (max-width: 768px) {
+  .search-cart-container {
+    padding-right: 50px;
+  }
+
+  .search-group {
+    gap: 0.5rem;
+  }
+
+  .cart-icon a svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .btn-indigo {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* 媒體查詢：平板 */
+@media (min-width: 769px) and (max-width: 1199px) {
+  .search-cart-container {
+    max-width: 800px;
+  }
+}
+
+/* 會員頭像及名稱的整體連結容器 */
+.member-profile-link {
+  /* 調整間距，確保與右側的通知連結不重疊 */
+  margin-left: 15px;
+  text-decoration: none;
+  margin-top: 7px;
+}
+
+/* 會員頭像樣式：實現圓形、大小和間距 */
+.member-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 8px;
+  /* 確保圖片內容填滿 */
+  object-fit: cover;
+}
+
+/* 帳號名稱樣式：使用與導覽列小字相似的樣式 */
+.member-name {
+  color: white;
+  font-size: 1rem;
+  margin-right: 5px;
+  text-decoration: none;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  /* 確保名字不會換行 */
+  max-width: 150px;
+  /* 限制名字最大寬度，避免撐爆導覽列 */
+}
+
+/* 確保頭像連結 hover 時保持樣式一致 */
+.member-profile-link:hover .member-name {
+  color: #131b33;
+}
+
+.brand-logo {
+  height: 100px;
+  width: 100px;
+}
+
+/* 確保 Logo 連結與其他元素垂直對齊 */
+.logo-link {
+  flex-shrink: 0;
+  /* 確保 Logo 不會被壓縮 */
+  margin-right: 32px;
+  margin-left: -70px;
+}
+
+.top-nav-left {
+  margin-left: -40px;
+}
+
+.top-nav-right {
+  margin-right: -180px;
+}
+
+/* 防止內容被固定導覽列遮住，您可以根據實際 header 高度調整這個數值 */
+.shopping-main-content {
+  margin-top: 150px;
+}
+
+/* 整合組員的下拉選單樣式 */
+.member-dropdown-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-width: 120px;
+  /* 給予最小寬度，防止帳號被蓋掉 */
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 1000;
+  display: none;
+  min-width: 280px;
+  padding: 0.5rem 0;
+  margin: 0.125rem 0 0;
+  font-size: 0.875rem;
+  color: #1e293b;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(98, 105, 118, 0.16);
+  border-radius: 8px;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-item {
+  padding: 10px 20px;
+  color: #333;
+  text-decoration: none;
+  display: block;
+  transition: background 0.2s;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+  color: #764ba2;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background-color: #eee;
+  margin: 8px 0;
+}
+
+
+/* 修正原本頭像樣式 */
+.member-profile-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 登入按鈕 */
+.login-align {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  /* 圖示與文字的距離 */
+  margin-top: 0 !important;
+  /* 強制覆蓋 nav-link-sm 的 margin-top 10px */
+  padding-bottom: 5px;
+  /* 根據視覺微調，讓它與旁邊的文字基準線對齊 */
+  padding-top: 10px;
+}

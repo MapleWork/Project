@@ -1,0 +1,11 @@
+<div class="seller-layout">
+  <app-seller-navbar (toggleSidebar)="isSidebarCollapsed = !isSidebarCollapsed"></app-seller-navbar>
+
+  <div class="layout-body">
+    <app-seller-sidebar [isCollapsed]="isSidebarCollapsed"></app-seller-sidebar>
+
+    <main class="main-content" [class.collapsed]="isSidebarCollapsed">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

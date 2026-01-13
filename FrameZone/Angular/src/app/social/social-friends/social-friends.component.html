@@ -1,0 +1,93 @@
+<div class="card shadow-sm friend-list-card">
+  <div class="card-body">
+
+    <div class="input-group custom-search">
+      <span class="input-group-text search-icon-box border-end-0">
+        <i class="bi bi-search"></i>
+      </span>
+      <input type="text" class="form-control border-start-0 ps-2" placeholder="搜尋..."
+        [(ngModel)]="searchTerm">
+    </div>
+
+    <div class="friend-list-content">
+      <button class="friend-btn rounded section-btn" type="button" (click)="toggleSection('recent')">
+        <span class="friend-name">最近聊天</span>
+        <span class="section-arrow">
+          <i class="bi" [ngClass]="openSection.recent ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+        </span>
+      </button>
+      @if (openSection.recent) {
+      @if (getFilteredRecentChats().length === 0) {
+      <div class="text-muted text-center py-3">目前沒有最近聊天</div>
+      }
+      @else {
+      @for (c of getFilteredRecentChats(); track c.roomId) {
+      <button class="friend-btn rounded friend-item" type="button"
+        (click)="selectFriend({ id: c.targetUserId, name: c.targetUserName, avatar: c.targetUserAvatar }); $event.stopPropagation()">
+        <img [src]="getRecentAvatar(c)" class="friend-avatar" [alt]="c.targetUserName" />
+        <div class="d-flex flex-column align-items-start">
+          <span class="friend-name">{{ c.targetUserName }}</span>
+          <span class="text-muted small">{{ c.lastMessage || '...' }}</span>
+        </div>
+        @if (getUnreadCount(c.targetUserId) > 0) {
+        <span class="unread-badge">{{ getUnreadCount(c.targetUserId) }}</span>
+        }
+      </button>
+      }
+      }
+      }
+
+      <hr class="my-3">
+
+      <button class="friend-btn rounded section-btn" type="button" (click)="toggleSection('following')">
+        <span class="friend-name">追蹤中 ({{ following.length }})</span>
+        <span class="section-arrow">
+          <i class="bi" [ngClass]="openSection.following ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+        </span>
+      </button>
+      @if (openSection.following) {
+      @if (getFilteredFollowing().length === 0) {
+      <div class="text-muted text-center py-3">目前沒有追蹤中</div>
+      }
+      @else {
+      @for (f of getFilteredFollowing(); track f.userId) {
+      <button class="friend-btn rounded friend-item" type="button"
+        (click)="selectFriend({ id: f.userId, name: f.displayName, avatar: f.avatar }); $event.stopPropagation()">
+        <img [src]="getFollowAvatar(f)" class="friend-avatar" [alt]="f.displayName" />
+        <span class="friend-name">{{ f.displayName }}</span>
+        @if (getUnreadCount(f.userId) > 0) {
+        <span class="unread-badge">{{ getUnreadCount(f.userId) }}</span>
+        }
+      </button>
+      }
+      }
+      }
+
+      <hr class="my-3">
+
+      <button class="friend-btn rounded section-btn" type="button" (click)="toggleSection('followers')">
+        <span class="friend-name">粉絲 ({{ followers.length }})</span>
+        <span class="section-arrow">
+          <i class="bi" [ngClass]="openSection.followers ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+        </span>
+      </button>
+      @if (openSection.followers) {
+      @if (getFilteredFollowers().length === 0) {
+      <div class="text-muted text-center py-3">目前沒有粉絲</div>
+      }
+      @else {
+      @for (f of getFilteredFollowers(); track f.userId) {
+      <button class="friend-btn rounded friend-item" type="button"
+        (click)="selectFriend({ id: f.userId, name: f.displayName, avatar: f.avatar }); $event.stopPropagation()">
+        <img [src]="getFollowAvatar(f)" class="friend-avatar" [alt]="f.displayName" />
+        <span class="friend-name">{{ f.displayName }}</span>
+        @if (getUnreadCount(f.userId) > 0) {
+        <span class="unread-badge">{{ getUnreadCount(f.userId) }}</span>
+        }
+      </button>
+      }
+      }
+      }
+    </div>
+  </div>
+</div>

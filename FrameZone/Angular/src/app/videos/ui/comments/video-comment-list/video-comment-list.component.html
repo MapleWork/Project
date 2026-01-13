@@ -1,0 +1,13 @@
+<div class="card shadow-sm border-0">
+  <div class="card-body">
+
+    <app-video-comment-item *ngFor="let comment of comments; trackBy: trackById" [comment]="comment"
+      (submitReply)="onSubmitReply($event)">
+    </app-video-comment-item>
+
+    <div *ngIf="comments.length === 0" class="text-secondary text-center py-3">
+      目前沒有留言。
+    </div>
+
+  </div>
+</div>

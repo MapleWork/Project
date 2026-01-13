@@ -1,0 +1,99 @@
+﻿<div class="profile-container">
+  <header class="profile-header card-style">
+    <div class="top-section">
+      <div class="user-info">
+        @if (profile$ | async; as profile) {
+        <div class="avatar-circle">
+          <img [src]="getAvatarUrl(profile)" [alt]="getDisplayName(profile)" />
+        </div>
+        <div class="user-text">
+          <h1>{{ getDisplayName(profile) }}</h1>
+          <p>追蹤中 {{ profile.followingCount }} · 粉絲 {{ profile.followerCount }}</p>
+        </div>
+        } @else {
+        <div class="avatar-circle">
+          <img src="" alt="未登入" />
+        </div>
+        <div class="user-text">
+          <h1>未登入</h1>
+          <p>追蹤中 0 · 粉絲 0</p>
+        </div>
+        }
+      </div>
+
+      @if (!(isOwnProfile$ | async)) {
+      <div class="action-group">
+        @if (isFollowing$ | async) {
+        <button class="btn btn-secondary" (click)="removeFollow()">取消追蹤</button>
+        } @else {
+        <button class="btn btn-primary" (click)="addFollow()">追蹤</button>
+        }
+        <button class="btn btn-secondary" (click)="sendMessage()">發送訊息</button>
+      </div>
+      }
+    </div>
+
+    <nav class="tab-nav">
+      <button [class.active]="currentView() === 'all'" (click)="setView('all')">全部貼文</button>
+      <button [class.active]="currentView() === 'following'" (click)="setView('following')">追蹤中</button>
+      <button [class.active]="currentView() === 'followers'" (click)="setView('followers')">粉絲</button>
+    </nav>
+  </header>
+
+  <main class="content-area">
+    @switch (currentView()) {
+    @case ('all') {
+    @if (profileUserId$ | async; as userId) {
+    <app-social-posts-list [userId]="userId"></app-social-posts-list>
+    } @else {
+    <p class="text-muted text-center">請先登入</p>
+    }
+    }
+
+
+    @case ('following') {
+    @if (following$ | async; as following) {
+    @if (following.length === 0) {
+    <div class="card-style p-4 text-center">目前沒有追蹤中</div>
+    } @else {
+    <div class="card-style p-3">
+      <div class="follow-grid">
+      @for (user of following; track user.userId) {
+      <a class="follow-item text-decoration-none text-reset"
+        [routerLink]="['/social/profile', user.userId]">
+        <div class="avatar-circle">
+          <img [src]="getFollowAvatar(user)" [alt]="user.displayName" />
+        </div>
+        <div class="follow-name">{{ user.displayName }}</div>
+      </a>
+      }
+      </div>
+    </div>
+    }
+    }
+    }
+
+    @case ('followers') {
+    @if (followers$ | async; as followers) {
+    @if (followers.length === 0) {
+    <div class="card-style p-4 text-center">目前沒有粉絲</div>
+    } @else {
+    <div class="card-style p-3">
+      <div class="follow-grid">
+      @for (user of followers; track user.userId) {
+      <a class="follow-item text-decoration-none text-reset"
+        [routerLink]="['/social/profile', user.userId]">
+        <div class="avatar-circle">
+          <img [src]="getFollowAvatar(user)" [alt]="user.displayName" />
+        </div>
+        <div class="follow-name">{{ user.displayName }}</div>
+      </a>
+      }
+      </div>
+    </div>
+    }
+    }
+    }
+    }
+  </main>
+</div>

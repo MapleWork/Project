@@ -1,0 +1,59 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  /* 防止水平捲軸出現 */
+}
+
+.app-footer {
+  background: linear-gradient(135deg, #7999f1 0%, #764ba2 100%);
+  ;
+  color: #f0f2f5;
+  font-size: 1rem;
+  width: 100vw;
+  /* 強制寬度等於視窗寬度 */
+  position: relative;
+  left: 50%;
+  margin-left: -50vw;
+}
+
+/* Footer 連結和文字樣式 */
+.footer-text {
+  color: #eef2fd;
+  line-height: 1;
+}
+
+.footer-links a.footer-link {
+  color: #eef2fd;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  padding: 0.2rem 0;
+  display: block;
+}
+
+.footer-links a.footer-link:hover {
+  color: #1e293b;
+}
+
+/* 社交圖標樣式 */
+.social-icons .footer-icon {
+  color: #eef2fd;
+  transition: color 0.3s ease;
+
+}
+
+.social-icons .footer-icon:hover {
+  color: #1e293b;
+}
+
+/* 分隔線樣式 */
+.footer-hr {
+  border-top: 1px solid #2a2e64;
+}
+
+.logoimage {
+  width: 100px;
+  height: 100px;
+}

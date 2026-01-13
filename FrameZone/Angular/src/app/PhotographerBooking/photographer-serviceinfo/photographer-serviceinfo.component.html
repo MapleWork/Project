@@ -1,0 +1,50 @@
+<section class="service-section">
+  <h2 class="section-title">選擇方案</h2>
+
+  <div class="service-card" *ngFor="let service of services" [class.active]="isExpanded(service.photographerServiceId)"
+    (click)="toggleService(service)">
+
+    <div class="service-summary">
+      <div class="service-info">
+        <h4>{{ service.serviceName }}</h4>
+        <p class="service-desc">{{ service.duration }} 分鐘拍攝</p>
+      </div>
+      <div class="service-price">TWD {{ service.basePrice | number }}</div>
+    </div>
+
+    <div class="service-details">
+      <div class="detail-item">
+        <div class="detail-label">包含照片</div>
+        <div class="detail-value">{{ service.includedPhotos }} 張精修</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label">交件天數</div>
+        <div class="detail-value">拍攝後 {{ service.deliveryDays }} 個工作天</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label">細項說明</div>
+        <div class="detail-value">{{ service.description }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-section mt-5">
+    <h2 class="section-title">常見問題</h2>
+    <div class="accordion accordion-flush border-top" id="faqAccordion">
+      <div class="faq-item accordion-item" *ngFor="let faq of faqs; let i = index">
+        <h2 class="accordion-header" [id]="'heading' + i">
+          <button class="accordion-button collapsed fw-bold px-0" type="button" [attr.data-bs-toggle]="'collapse'"
+            [attr.data-bs-target]="'#collapse' + i" aria-expanded="false" [attr.aria-controls]="'collapse' + i">
+            {{ faq.question }}
+          </button>
+        </h2>
+        <div [id]="'collapse' + i" class="accordion-collapse collapse" [attr.aria-labelledby]="'heading' + i"
+          [attr.data-bs-parent]="'#faqAccordion'">
+          <div class="accordion-body px-0 text-secondary small">
+            {{ faq.answer }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,621 @@
+﻿{
+   "CodeGenerationMode": 5,
+   "ContextClassName": "AAContext",
+   "ContextNamespace": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "IrregularWords": null,
+   "MinimumProductVersion": "2.6.1248",
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "Models",
+   "PluralRules": null,
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "FrameZone_WebApi",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 2,
+   "SelectedToBeGenerated": 0,
+   "SingularRules": null,
+   "T4TemplatePath": null,
+   "Tables": [
+      {
+         "Name": "[dbo].[Bank]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[BankBranch]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[CardBrand]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Invoice]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[InvoiceSettings]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PaymentMethod]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PaymentMethodType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PaymentTransaction]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Photo]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PhotoAIClassificationLog]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PhotoAIClassificationSuggestion]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PhotoAlbum]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PhotoCategory]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PhotoCategoryType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PhotoClassificationSource]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PhotoFeatureToggle]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PhotoGeneralSetting]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PhotoLocation]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PhotoMaintenanceSetting]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PhotoMetadata]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PhotoPhotoAlbum]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PhotoPhotoCategory]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PhotoPhotoTag]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PhotoQuotaType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PhotoSecuritySetting]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PhotoShare]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PhotoStorage]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PhotoStorageProvider]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PhotoSubscriptionHistory]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PhotoSubscriptionPlan]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PhotoSubscriptionQuota]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PhotoTag]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PhotoThirdPartyConfig]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PhotoThirdPartyServiceType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PhotoUploadLimitSetting]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PhotoUserQuotaUsage]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PhotoUserSubscription]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[RefundRequest]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TransactionStatusLog]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TransactionStatusType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TransactionType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[User]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[UserBankAccount]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[UserLog]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[UserNotificationPreference]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[UserPermission]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[UserPermissionCategory]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[UserPrivacySettings]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[UserPrivateInfo]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[UserProfile]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[UserRole]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[UserRolePermission]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[UserRoleType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[UserSecurity]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[UserSecurityStatus]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[UserSession]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[UserSystemModule]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[UserThirdPartyAuth]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[UserVerification]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[UserVerificationType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Notification].[BellNotification]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Notification].[BellNotificationArchive]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Notification].[BellNotificationPreference]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Notification].[BellNotificationRecipient]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Notification].[Category]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Notification].[Priority]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Notification].[Template]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[PhotographerBooking].[AvailableSlots]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[PhotographerBooking].[Bookings]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[PhotographerBooking].[Photographers]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[PhotographerBooking].[PhotographerServices]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[PhotographerBooking].[PhotographerSpecialties]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[PhotographerBooking].[PhotographerVerificationHistory]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[PhotographerBooking].[ServiceAreas]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[PhotographerBooking].[ServiceTypes]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[PhotographerBooking].[SpecialtyCategories]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[PhotographerBooking].[SpecialtyTags]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Share].[ChatMembers]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Share].[ChatRoom]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Share].[CommentLikes]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Share].[Comments]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Share].[CommentTarget]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Share].[Favorites]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Share].[MessageReads]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Share].[Messages]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Share].[ReportAction]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Share].[ReportCategories]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Share].[Reports]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Share].[ReviewPhotos]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Share].[Reviews]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Share].[TargetTypes]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Shopping].[BuyerAbnormal]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Shopping].[BuyerCoupons]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Shopping].[BuyerDetails]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Shopping].[Coupons]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Shopping].[FrequentlyAskedQuestions]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Shopping].[OrderDetails]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Shopping].[Orders]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Shopping].[OrderShipping]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Shopping].[PayoutBatchs]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Shopping].[PayoutDetails]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Shopping].[PickupConvenienceStores]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Shopping].[ProductAudits]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Shopping].[ProductImages]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Shopping].[ProductPropertyDetails]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Shopping].[ProductPropertys]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Shopping].[Products]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Shopping].[ProductSellerCategoryMappin]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Shopping].[ProductShippingOption]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Shopping].[ProductSpecifications]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Shopping].[ReceivingAddresses]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Shopping].[ReportTarget]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Shopping].[SellerAuditHistory]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Shopping].[SellerCategories]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Shopping].[SellerDetails]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Shopping].[ShoppingCart]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Shopping].[SpecOptionMapping]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Shopping].[StoreBasicInformation]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Shopping].[WalletTransactions]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[SocialNetwork].[CommentImages]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[SocialNetwork].[CommentVideos]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[SocialNetwork].[EventMembers]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[SocialNetwork].[Events]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[SocialNetwork].[Follows]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[SocialNetwork].[GroupMembers]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[SocialNetwork].[Groups]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[SocialNetwork].[PostImages]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[SocialNetwork].[PostLikes]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[SocialNetwork].[Posts]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[SocialNetwork].[PostShares]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[SocialNetwork].[PostVideos]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[SocialNetwork].[PostViews]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[SocialNetwork].[ReportTarget]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[SocialNetwork].[Stickers]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Video].[Channels]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Video].[Following]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Video].[Likes]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Video].[Playlists]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Video].[PlaylistVideos]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Video].[ReportTarget]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Video].[UserSavedPlaylists]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Video].[Videos]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Video].[View]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": null,
+   "UncountableWords": null,
+   "UseAsyncStoredProcedureCalls": true,
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDatabaseNamesForRoutines": true,
+   "UseDateOnlyTimeOnly": true,
+   "UseDbContextSplitting": false,
+   "UseDecimalDataAnnotationForSprocResult": true,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": true,
+   "UseInternalAccessModifiersForSprocsAndFunctions": false,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UsePrefixNavigationNaming": false,
+   "UseSchemaFolders": false,
+   "UseSchemaNamespaces": false,
+   "UseSpatial": false,
+   "UseT4": false,
+   "UseT4Split": false
+}

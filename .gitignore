@@ -1,0 +1,9 @@
+﻿################################################################################
+# 這個 .gitignore 檔案由 Microsoft(R) Visual Studio 自動建立。
+################################################################################
+
+/.vs
+/FrameZone/WebAPI/FrameZone_WebApi/wwwroot
+/PersonalFinance/personalFinanceApi/obj
+FrameZone/WebAPI/FrameZone_WebApi/appsettings.json
+FrameZone/WebAPI/FrameZone_WebApi/appsettings.Development.json

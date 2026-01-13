@@ -1,0 +1,451 @@
+/* ==================== Sidebar 容器 ==================== */
+
+.sidebar {
+  width: 280px;
+  height: 100%;
+  background-color: var(--tblr-bg-surface);
+  border-right: 1px solid var(--tblr-border-color);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+/* ==================== Sidebar Header ==================== */
+
+.sidebar-header {
+  padding: 1rem;
+  border-bottom: 1px solid var(--tblr-border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  background-color: var(--tblr-bg-surface);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.sidebar-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--tblr-body-color);
+}
+
+.sidebar-title i {
+  font-size: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==================== Sidebar Content ==================== */
+
+.sidebar-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.5rem 0;
+}
+
+/* 自訂滾動條樣式 */
+.sidebar-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar-content::-webkit-scrollbar-thumb {
+  background: var(--tblr-border-color);
+  border-radius: 3px;
+}
+
+.sidebar-content::-webkit-scrollbar-thumb:hover {
+  background: var(--tblr-secondary);
+}
+
+/* ==================== 載入中狀態 ==================== */
+
+.sidebar-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+  color: var(--tblr-secondary);
+}
+
+/* ==================== 空狀態 ==================== */
+
+.sidebar-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+  color: var(--tblr-secondary);
+  text-align: center;
+}
+
+.sidebar-empty i {
+  font-size: 3rem;
+  opacity: 0.5;
+  margin-bottom: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-empty p {
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+/* ==================== 分類群組 ==================== */
+
+.category-group {
+  margin-bottom: 0.25rem;
+}
+
+.category-group.category-coming-soon {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* 分類標題 */
+.category-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.2s ease;
+  font-weight: 600;
+  color: var(--tblr-body-color);
+}
+
+.category-header:hover {
+  background-color: var(--tblr-hover-bg);
+}
+
+.category-header.active {
+  background-color: var(--tblr-active-bg);
+}
+
+.category-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  min-width: 0; /* 防止 flex 溢出 */
+}
+
+/* 修正：分類 icon 樣式 */
+.category-info i.category-icon {
+  font-size: 1.125rem;
+  color: var(--tblr-primary);
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* 確保 Tabler Icons 能正確顯示 */
+.category-info i.category-icon::before {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+.category-name {
+  font-size: 0.9375rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.category-toggle {
+  font-size: 1rem;
+  color: var(--tblr-secondary);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* ==================== 標籤列表 ==================== */
+
+.tags-list {
+  padding: 0.25rem 0;
+}
+
+/* 標籤項目 */
+.tag-item {
+  margin-bottom: 0.125rem;
+}
+
+.tag-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.2s ease;
+  border-radius: 0.25rem;
+  margin: 0 0.5rem;
+}
+
+.tag-content:hover {
+  background-color: var(--tblr-hover-bg);
+}
+
+.tag-content.tag-selected {
+  background-color: var(--tblr-primary-lt);
+}
+
+.tag-content.tag-has-children {
+  font-weight: 500;
+}
+
+/* 展開/收合圖示 */
+.tag-toggle {
+  font-size: 0.875rem;
+  color: var(--tblr-secondary);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.tag-toggle::before {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+.tag-spacer {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* 複選框 */
+.tag-checkbox {
+  flex-shrink: 0;
+  cursor: pointer;
+  margin: 0;
+}
+
+/* 標籤名稱 */
+.tag-name {
+  flex: 1;
+  font-size: 0.875rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--tblr-body-color);
+}
+
+.tag-selected .tag-name {
+  font-weight: 500;
+  color: var(--tblr-primary);
+}
+
+/* 照片數量 */
+.tag-count {
+  font-size: 0.75rem;
+  color: var(--tblr-secondary);
+  background-color: var(--tblr-bg-surface-secondary);
+  padding: 0.125rem 0.5rem;
+  border-radius: 10px;
+  flex-shrink: 0;
+  min-width: 24px;
+  text-align: center;
+}
+
+.tag-selected .tag-count {
+  background-color: var(--tblr-primary);
+  color: white;
+}
+
+/* 子標籤容器 */
+.tag-children {
+  margin-top: 0.125rem;
+}
+
+/* ==================== RWD 響應式 (手機版) ==================== */
+
+/* 手機版 */
+@media (max-width: 575px) {
+  .sidebar {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .sidebar-header {
+    padding: 0.75rem;
+  }
+
+  .category-header {
+    padding: 0.625rem 0.75rem;
+  }
+
+  .tag-content {
+    padding: 0.5rem 0.75rem;
+    margin: 0 0.25rem;
+  }
+}
+
+/* ==================== 深色模式支援 ==================== */
+
+@media (prefers-color-scheme: dark) {
+  .sidebar {
+    background-color: var(--tblr-bg-surface-dark);
+    border-right-color: var(--tblr-border-color-dark);
+  }
+
+  .sidebar-header {
+    background-color: var(--tblr-bg-surface-dark);
+    border-bottom-color: var(--tblr-border-color-dark);
+  }
+
+  .category-header:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  .category-header.active {
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .tag-content:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  .tag-content.tag-selected {
+    background-color: rgba(var(--tblr-primary-rgb), 0.15);
+  }
+}
+
+/* ==================== 動畫效果 ==================== */
+
+/* 展開/收合動畫 */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tags-list,
+.tag-children {
+  animation: slideDown 0.2s ease;
+}
+
+/* Hover 效果增強 */
+.category-header,
+.tag-content {
+  position: relative;
+}
+
+.category-header::before,
+.tag-content::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 0;
+  background-color: var(--tblr-primary);
+  transition: height 0.2s ease;
+  border-radius: 0 2px 2px 0;
+}
+
+.category-header:hover::before,
+.tag-content:hover::before {
+  height: 60%;
+}
+
+.category-header.active::before,
+.tag-content.tag-selected::before {
+  height: 80%;
+}
+
+/* ==================== 無障礙支援 ==================== */
+
+.category-header:focus,
+.tag-content:focus {
+  outline: 2px solid var(--tblr-primary);
+  outline-offset: -2px;
+}
+
+/* 高對比模式 */
+@media (prefers-contrast: high) {
+  .sidebar {
+    border-right-width: 2px;
+  }
+
+  .category-header,
+  .tag-content {
+    border: 1px solid transparent;
+  }
+
+  .category-header:hover,
+  .tag-content:hover {
+    border-color: var(--tblr-primary);
+  }
+}
+
+/* ==================== 列印樣式 ==================== */
+
+@media print {
+  .sidebar {
+    display: none;
+  }
+}
+
+/* ==================== Icon Fallback ==================== */
+
+/* 確保所有 icon 元素都能正確顯示 */
+i[class*="ti-"] {
+  font-family: 'tabler-icons' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 如果 icon 無法載入，顯示 fallback 符號 */
+i.category-icon:not([class*="ti-"])::before {
+  content: '📁';
+}

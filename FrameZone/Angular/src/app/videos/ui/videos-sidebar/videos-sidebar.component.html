@@ -1,0 +1,57 @@
+<!-- videos-sidebar.component.html -->
+<aside class="navbar navbar-vertical navbar-expand-lg" [ngClass]="{'collapsed': isCollapsed}" data-bs-theme="dark">
+  <div class="container-fluid">
+
+    <!-- Sidebar Header -->
+    <div class="navbar-brand">
+      <a [routerLink]="['/home']">
+        <div class="logo-image">
+          <img src="favicon2.png" alt="FrameZone Logo">
+        </div>
+        <h2 [class.d-none]="isCollapsed">FrameZone</h2>
+      </a>
+    </div>
+
+    <!-- 使用者資訊 -->
+    <div class="sidebar-user-info" [ngClass]="{'collapsed': isCollapsed}">
+      <div class="sidebar-avatar-wrapper" (click)="gotochannel()">
+        <app-user-avatar [avatarUrl]="getUserAvatar()"></app-user-avatar>
+      </div>
+      <div class="user-name-tag" *ngIf="!isCollapsed">
+        {{ displayUserName }}
+      </div>
+    </div>
+
+    <!-- Toggle Button -->
+    <button class="btn btn-icon sidebar-toggle" (click)="toggleSidebar()" type="button"
+      [attr.aria-label]="isCollapsed ? '展開側邊欄' : '收合側邊欄'">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        [style.transform]="isCollapsed ? 'rotate(180deg)' : 'rotate(0deg)'">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+
+    <!-- Navigation Menu -->
+    <app-videos-sidebar-menu *ngIf="!isCreatorPage" [isCollapsed]="isCollapsed">
+    </app-videos-sidebar-menu>
+
+    <app-videos-sidebar-creator *ngIf="isCreatorPage" [isCollapsed]="isCollapsed">
+    </app-videos-sidebar-creator>
+
+    <!-- 登入 / 登出 按鈕 -->
+    <div class="sidebar-auth-btn mt-auto d-flex justify-content-center sidebar-log-toggle "
+      [ngClass]="{'collapsed': isCollapsed}">
+      <button *ngIf="isLoggedIn; else loginBtn" class="btn btn-danger w-100" (click)="logout()">
+        <i class="icon-tabler icon-tabler-logout"></i>
+        <span>登出</span>
+      </button>
+      <ng-template #loginBtn>
+        <button class="btn btn-primary w-100" (click)="login()">
+          <i class="icon-tabler icon-tabler-login"></i>
+          <span>登入</span>
+        </button>
+      </ng-template>
+    </div>
+  </div>
+</aside>

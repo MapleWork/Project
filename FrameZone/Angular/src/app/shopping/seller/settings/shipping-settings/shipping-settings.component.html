@@ -1,0 +1,243 @@
+<div class="settings-container">
+  <div class="settings-header">
+    <div>
+      <h1 class="settings-title">物流設定</h1>
+    </div>
+    <button class="btn-add" (click)="openAddModal()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        style="display: inline-block; vertical-align: middle; margin-right: 6px;">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M12 5l0 14" />
+        <path d="M5 12l14 0" />
+      </svg>
+      新增物流方式
+    </button>
+  </div>
+
+  <div class="shipping-methods-grid">
+    <div *ngFor="let method of shippingMethods" class="method-card" [class.disabled]="!method.isEnabled">
+      <div class="card-header">
+        <div class="method-info">
+          <h3 class="method-name">{{ method.name }}</h3>
+          <span class="provider-badge">{{ method.provider }}</span>
+        </div>
+        <div class="status-badge" [class.active]="method.isEnabled">
+          {{ method.isEnabled ? '啟用中' : '已停用' }}
+        </div>
+      </div>
+
+      <div class="card-body">
+        <p class="method-description">{{ method.description }}</p>
+
+        <div class="method-details">
+          <div class="detail-item">
+            <span class="detail-icon icon-coin">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                <path d="M14.8 9a2 2 0 0 0 -1.8 -1h-2a2 2 0 1 0 0 4h2a2 2 0 1 1 0 4h-2a2 2 0 0 1 -1.8 -1" />
+                <path d="M12 7v10" />
+              </svg>
+            </span>
+            <div>
+              <div class="detail-label">基本運費</div>
+              <div class="detail-value">NT$ {{ method.basePrice }}</div>
+            </div>
+          </div>
+
+          <div class="detail-item">
+            <span class="detail-icon icon-clock">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                <path d="M12 7l0 5l3 3" />
+              </svg>
+            </span>
+            <div>
+              <div class="detail-label">配送時間</div>
+              <div class="detail-value">{{ method.estimatedDays }} 工作天</div>
+            </div>
+          </div>
+
+          <div class="detail-item" *ngIf="method.freeShippingThreshold">
+            <span class="detail-icon icon-gift">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M3 8m0 1a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-16a1 1 0 0 1 -1 -1z" />
+                <path d="M12 8l0 13" />
+                <path d="M19 12v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-7" />
+                <path d="M7.5 8a2.5 2.5 0 0 1 0 -5a4.8 8 0 0 1 4.5 5a4.8 8 0 0 1 4.5 -5a2.5 2.5 0 0 1 0 5" />
+              </svg>
+            </span>
+            <div>
+              <div class="detail-label">免運門檻</div>
+              <div class="detail-value">NT$ {{ method.freeShippingThreshold }}</div>
+            </div>
+          </div>
+
+          <div class="detail-item">
+            <span class="detail-icon icon-map">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
+              </svg>
+            </span>
+            <div>
+              <div class="detail-label">配送範圍</div>
+              <div class="detail-value">{{ method.coverageAreas.join(', ') }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <button class="btn-icon btn-edit" (click)="openEditModal(method)" title="編輯">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
+            <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
+            <path d="M16 5l3 3" />
+          </svg>
+          編輯
+        </button>
+        <button class="btn-icon btn-toggle" [class.active]="method.isEnabled" (click)="toggleMethod(method)"
+          title="切換狀態">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M16 12m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+            <path d="M2 6m0 6a6 6 0 0 1 6 -6h8a6 6 0 0 1 6 6v0a6 6 0 0 1 -6 6h-8a6 6 0 0 1 -6 -6z" />
+          </svg>
+          {{ method.isEnabled ? '停用' : '啟用' }}
+        </button>
+        <button class="btn-icon btn-delete" (click)="deleteMethod(method.id)" title="刪除">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M4 7l16 0" />
+            <path d="M10 11l0 6" />
+            <path d="M14 11l0 6" />
+            <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+            <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+          </svg>
+          刪除
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 新增物流方式 Modal -->
+<div class="modal-overlay" *ngIf="showAddModal" (click)="closeAddModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h2>新增物流方式</h2>
+      <button class="btn-close" (click)="closeAddModal()">✕</button>
+    </div>
+
+    <div class="modal-body">
+      <div class="form-group">
+        <label>物流名稱 *</label>
+        <input type="text" [(ngModel)]="newMethod.name" placeholder="例如: 7-11 取貨">
+      </div>
+
+      <div class="form-group">
+        <label>物流商 *</label>
+        <input type="text" [(ngModel)]="newMethod.provider" placeholder="例如: 7-ELEVEN">
+      </div>
+
+      <div class="form-group">
+        <label>描述</label>
+        <textarea [(ngModel)]="newMethod.description" placeholder="簡單描述此物流方式" rows="3"></textarea>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>基本運費 (NT$) *</label>
+          <input type="number" [(ngModel)]="newMethod.basePrice" min="0">
+        </div>
+
+        <div class="form-group">
+          <label>預估天數 *</label>
+          <input type="text" [(ngModel)]="newMethod.estimatedDays" placeholder="例如: 2-3">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>免運門檻 (NT$)</label>
+        <input type="number" [(ngModel)]="newMethod.freeShippingThreshold" min="0" placeholder="選填">
+      </div>
+
+      <div class="form-group">
+        <label>配送範圍</label>
+        <input type="text" [(ngModel)]="newMethod.coverageAreas" placeholder="以逗號分隔,例如: 台灣本島,離島">
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-secondary" (click)="closeAddModal()">取消</button>
+      <button class="btn-primary" (click)="saveNewMethod()">儲存</button>
+    </div>
+  </div>
+</div>
+
+<!-- 編輯物流方式 Modal -->
+<div class="modal-overlay" *ngIf="showEditModal" (click)="closeEditModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h2>編輯物流方式</h2>
+      <button class="btn-close" (click)="closeEditModal()">✕</button>
+    </div>
+
+    <div class="modal-body" *ngIf="currentMethod">
+      <div class="form-group">
+        <label>物流名稱 *</label>
+        <input type="text" [(ngModel)]="currentMethod.name">
+      </div>
+
+      <div class="form-group">
+        <label>物流商 *</label>
+        <input type="text" [(ngModel)]="currentMethod.provider">
+      </div>
+
+      <div class="form-group">
+        <label>描述</label>
+        <textarea [(ngModel)]="currentMethod.description" rows="3"></textarea>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>基本運費 (NT$) *</label>
+          <input type="number" [(ngModel)]="currentMethod.basePrice" min="0">
+        </div>
+
+        <div class="form-group">
+          <label>預估天數 *</label>
+          <input type="text" [(ngModel)]="currentMethod.estimatedDays">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>免運門檻 (NT$)</label>
+        <input type="number" [(ngModel)]="currentMethod.freeShippingThreshold" min="0">
+      </div>
+
+      <div class="form-group">
+        <label>配送範圍</label>
+        <input type="text" [value]="currentMethod.coverageAreas.join(', ')" placeholder="以逗號分隔">
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-secondary" (click)="closeEditModal()">取消</button>
+      <button class="btn-primary" (click)="saveEditMethod()">儲存</button>
+    </div>
+  </div>
+</div>

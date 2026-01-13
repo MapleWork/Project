@@ -1,0 +1,201 @@
+﻿using FrameZone_WebApi.Models;
+
+using FrameZone_WebApi.Socials.Constants;
+using FrameZone_WebApi.Socials.DTOs;
+using Microsoft.EntityFrameworkCore;
+
+namespace FrameZone_WebApi.Socials.Repositories
+{
+    public class ChatRoomRepository
+    {
+        private readonly AAContext _context;
+        public ChatRoomRepository(AAContext context)
+        {
+            _context = context;
+        }
+
+        /// <summary>
+        /// 取得私聊聊天室 RoomId
+        /// 如果使用者已經有共同的私聊房間，回傳 RoomId
+        /// 若不存在則回傳 0
+        /// </summary>
+        public int GetPrivateRoomId(long userId, long targetUserId, string roomCategory)
+        {
+            return _context.ChatMembers
+                .Where(cm =>
+                    (cm.UserId == userId || cm.UserId == targetUserId) &&
+                    cm.Room.RoomType == "Private" &&
+                    cm.Room.RoomCategory == roomCategory &&
+                    cm.LeaveAt == null)
+                .GroupBy(cm => cm.RoomId)
+                .Where(g => g.Count() == 2)
+                .Select(g => g.Key)
+                .FirstOrDefault();
+        }
+
+        /// <summary>
+        /// 建立新的私聊聊天室（不含成員）
+        /// </summary>
+        public ChatRoom CreatePrivateRoom(string roomCategory)
+        {
+            var room = new ChatRoom
+            {
+                RoomType = "Private",
+                RoomCategory = roomCategory,
+                CreatedAt = DateTime.UtcNow
+            };
+
+            _context.ChatRooms.Add(room);
+            _context.SaveChanges();
+            return room;
+        }
+
+        /// <summary>
+        /// 建立多人聊天室（Group）
+        /// </summary>
+        public ChatRoom CreateGroupRoom(string roomName, string roomCategory)
+        {
+            var room = new ChatRoom
+            {
+                RoomType = "Group",
+                RoomCategory = roomCategory,
+                RoomName = roomName,
+                CreatedAt = DateTime.UtcNow
+            };
+
+            _context.ChatRooms.Add(room);
+            _context.SaveChanges();
+
+            return room;
+        }
+
+        /// <summary>
+        /// 將多位使用者加入聊天室
+        /// （私聊 / 群聊共用）
+        /// </summary>
+        public void AddMembers(int roomId, IEnumerable<long> userIds)
+        {
+            foreach (var userId in userIds.Distinct())
+            {
+                _context.ChatMembers.Add(new ChatMember
+                {
+                    RoomId = roomId,
+                    UserId = userId,
+                    JoinAt = DateTime.UtcNow
+                });
+            }
+
+            _context.SaveChanges();
+        }
+
+        /// <summary>
+        /// 取得使用者參與的所有聊天室
+        /// （之後聊天室清單會用到）
+        /// </summary>
+        public List<ChatRoom> GetUserRooms(long userId)
+        {
+            return _context.ChatMembers
+                .Where(cm => cm.UserId == userId && cm.LeaveAt == null)
+                .Select(cm => cm.Room)
+                .OrderByDescending(r => r.UpdatedAt ?? r.CreatedAt)
+                .ToList();
+        }
+
+        public List<RecentChatDto> GetRecentSocialPrivateChats(long userId)
+        {
+            var roomIds = _context.ChatMembers
+                .Where(cm =>
+                    cm.UserId == userId &&
+                    cm.LeaveAt == null &&
+                    cm.Room.RoomType == "Private" &&
+                    cm.Room.RoomCategory == RoomCategoryConst.Social)
+                .Select(cm => cm.RoomId)
+                .Distinct()
+                .ToList();
+
+            var results = new List<RecentChatDto>();
+
+            foreach (var roomId in roomIds)
+            {
+                var room = _context.ChatRooms.FirstOrDefault(r => r.RoomId == roomId);
+                if (room == null) continue;
+
+                var otherUser = _context.ChatMembers
+                    .Include(cm => cm.User)
+                        .ThenInclude(u => u.UserProfile)
+                    .Where(cm => cm.RoomId == roomId && cm.UserId != userId && cm.LeaveAt == null)
+                    .Select(cm => cm.User)
+                    .FirstOrDefault();
+
+                if (otherUser == null) continue;
+
+                var lastMessage = _context.Messages
+                    .Where(m => m.RoomId == roomId && m.DeletedAt == null)
+                    .OrderByDescending(m => m.CreatedAt)
+                    .FirstOrDefault();
+
+                var lastAt = lastMessage?.CreatedAt ?? room.UpdatedAt ?? room.CreatedAt;
+
+                results.Add(new RecentChatDto
+                {
+                    RoomId = roomId,
+                    TargetUserId = otherUser.UserId,
+                    TargetUserName = otherUser.UserProfile?.DisplayName ?? otherUser.Account ?? "使用者",
+                    TargetUserAvatar = otherUser.UserProfile?.Avatar,
+                    LastMessage = lastMessage?.MessageContent ?? string.Empty,
+                    LastMessageType = lastMessage?.MessageType,
+                    LastMessageCreatedAt = lastAt
+                });
+            }
+
+            return results
+                .OrderByDescending(r => r.LastMessageCreatedAt)
+                .Take(5)
+                .ToList();
+        }
+
+        public List<UnreadCountDto> GetUnreadCountsByTargetUser(long userId)
+        {
+            var rooms = _context.ChatMembers
+                .Where(cm =>
+                    cm.UserId == userId &&
+                    cm.LeaveAt == null &&
+                    cm.Room.RoomType == "Private" &&
+                    cm.Room.RoomCategory == RoomCategoryConst.Social)
+                .Select(cm => cm.RoomId)
+                .Distinct()
+                .ToList();
+
+            var relations = _context.ChatMembers
+                .Where(cm => rooms.Contains(cm.RoomId) && cm.UserId != userId && cm.LeaveAt == null)
+                .Select(cm => new { cm.RoomId, cm.UserId });
+
+            var unread = from rel in relations
+                         join m in _context.Messages on rel.RoomId equals m.RoomId
+                         where m.DeletedAt == null && m.SenderUserId != userId
+                         join mr in _context.MessageReads
+                            on new { m.MessageId, UserId = userId } equals new { mr.MessageId, mr.UserId } into mrj
+                         from mr in mrj.DefaultIfEmpty()
+                         where mr == null
+                         group m by rel.UserId into g
+                         select new UnreadCountDto
+                         {
+                             TargetUserId = g.Key,
+                             UnreadCount = g.Count()
+                         };
+
+            return unread.ToList();
+        }
+
+        /// <summary>
+        /// 檢查使用者是否在指定聊天室中（未離開）
+        /// </summary>
+        public bool IsUserInRoom(int roomId, long userId)
+        {
+            return _context.ChatMembers.Any(cm =>
+                cm.RoomId == roomId &&
+                cm.UserId == userId &&
+                cm.LeaveAt == null);
+        }
+    }
+}

@@ -1,0 +1,100 @@
+/* 隱藏驗證錯誤時的 X 圖示，只保留紅色邊框 */
+.form-control.is-invalid {
+  background-image: none !important;
+  padding-right: 0.75rem !important;
+}
+
+/* 如果 input 有 input-group，特別處理 */
+.input-group .form-control.is-invalid {
+  background-image: none !important;
+}
+
+/* 保持紅色邊框和錯誤訊息顏色 */
+.form-control.is-invalid {
+  border-color: #d63939;
+}
+
+.invalid-feedback {
+  color: #d63939;
+}
+
+/* Input 聚焦時的樣式 */
+.form-control.focus {
+  border-color: #206bc4;
+  box-shadow: 0 0 0 0.25rem rgba(32, 107, 196, 0.25);
+}
+
+/* 成功訊息的動畫 */
+.alert-success {
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 錯誤訊息的動畫 */
+.alert-danger {
+  animation: shake 0.3s ease-out;
+}
+
+@keyframes shake {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-5px);
+  }
+
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+.link-primary:hover {
+  text-decoration: underline;
+}
+
+.logo-image {
+  width: 40px;
+  height: 40px;
+}
+
+/* Google 登入按鈕容器 - 確保完全獨立且不會觸發其他事件 */
+.google-signin-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 50px;
+  padding: 0;
+  margin: 0;
+  /* 防止事件冒泡和層疊上下文問題 */
+  isolation: isolate;
+  position: relative;
+  z-index: 1;
+}
+
+/* 確保 Google 按鈕容器可以正常接收點擊事件 */
+#googleSignInButton {
+  pointer-events: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Google 按鈕內部元素置中 */
+#googleSignInButton > div {
+  margin: 0 auto !important;
+}
